@@ -13,7 +13,6 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { SearchPipe } from './search.pipe'
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

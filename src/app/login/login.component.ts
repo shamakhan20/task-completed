@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
@@ -10,24 +10,24 @@ import * as CryptoJS from 'crypto-js';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private router: Router) { 
+  constructor(private fb: FormBuilder, private router: Router) {
   }
   fieldTextType: boolean = true;
-  loginForm:FormGroup
+  loginForm: FormGroup;
 
   ngOnInit(): void {
-    this.loginForm=this.fb.group({
-      ID:[null,Validators.required],
-      password:['',[Validators.required, Validators.minLength(5)]]
+    this.loginForm = this.fb.group({
+      ID: [null, Validators.required],
+      password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
 
-  inputValue(user){
+  inputValue(user) {
     console.log(user)
     localStorage.setItem("Username", user)
   }
 
-  passwordValue(password){
+  passwordValue(password) {
     console.log(password)
     var securePassword = CryptoJS.SHA1(password);
     localStorage.setItem("password", securePassword)
@@ -41,14 +41,13 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login(){
-    if(this.loginForm.valid){
+  login() {
+    if (this.loginForm.valid) {
       this.router.navigate(['/post'])
     }
-    else{
-      alert("Please enter correct username or password")
+    else {
+      alert("Enter Username and password")
     }
   }
-
 
 }
