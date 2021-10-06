@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="users">
+        <form>
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3 search">
+                    <input class="form-control search" type="text" placeholder="search" [(ngModel)]="searchText" name="searchText" autocomplete="off">
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card" *ngFor="let detail of userDetails | search: searchText">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <label>Username</label>
+                            </div>
+                            <div class="col-2">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-2">
+                                <label>Contact</label>
+                            </div>
+                            <div class="col-2">
+                                <label>Website</label>
+                            </div>
+                           
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <label>{{detail.name}}</label>
+                            </div>
+                            <div class="col-2">
+                                <label>{{detail.email}}</label>
+                            </div>
+                            <div class="col-2">
+                                <label>{{detail.phone}}</label>
+                            </div>
+                            <div class="col-2">
+                                <label>{{detail.website}}</label>
+                            </div>
+                            <div class="col-3 post">
+                                <button type="button" [routerLink]="['/post', detail.id]">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
